@@ -93,7 +93,9 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 4. Conecte o aplicativo ao backend local ajustando a URL base nas configurações do Retrofit.
 
 5. Como rodar na web:
-   - ./gradlew wasmJsBrowserRun -t
+    ```bash
+      ./gradlew wasmJsBrowserRun -t
+    ```
 
 ## Contribuição
 

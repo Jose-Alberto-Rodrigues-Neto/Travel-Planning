@@ -71,7 +71,7 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 
 - Android Studio
 - IntelliJ IDEA com suporte a Spring Boot
-- JDK 17+
+- JDK 11+
 
 ### Passos
 
@@ -92,7 +92,7 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 
 ### Como rodar a versão para Desktop?
 ```bash
-      ainda não sei kk
+      gpt falou q é assim: ./gradlew run
 ```
 
 ## Contribuição
@@ -106,11 +106,11 @@ Contribuições são bem-vindas! Siga os passos abaixo para colaborar:
    ```
 3. Envie um pull request explicando suas alterações.
 
-## Contato
+# Development Team 
 
-Entre em contato para dúvidas ou sugestões:
-- Email: seu-email@exemplo.com
-- GitHub: [seu-usuario](https://github.com/seu-usuario)
+<a href="https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=Jose-Alberto-Rodrigues-Neto/Travel-Planning" alt="Lista de contribuidores"/>
+</a>
 
 ---
-Obrigado por usar o **Travel Planning**! Que sua próxima viagem seja inesquecível! 🌍✈️
+# Obrigado por usar o **Travel Planning**! Que sua próxima viagem seja inesquecível! 🌍✈️

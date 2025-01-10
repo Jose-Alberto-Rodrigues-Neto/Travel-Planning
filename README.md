@@ -77,25 +77,23 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 
 1. Clone o repositório:
    ```bash
-   git clone "link do repositorio"
+       git clone https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning.git
    ```
 
-2. Configure o backend: (Backend vai estar separado)
-   ```bash
-   cd travel-planning/backend
-   ./mvnw spring-boot:run
-   ```
-
-3. Configure o frontend:
+3. Configure o repositório no Android Studio:
    - Abra o projeto no Android Studio.
    - Compile e rode o aplicativo no emulador ou dispositivo físico.
+    
+#### Como rodar a versão web?
 
-4. Conecte o aplicativo ao backend local ajustando a URL base nas configurações do Retrofit.
+```bash
+    git clone https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning.git
+```
 
-5. Como rodar na web:
-    ```bash
-      ./gradlew wasmJsBrowserRun -t
-    ```
+### Como rodar a versão para Desktop?
+```bash
+      ainda não sei kk
+```
 
 ## Contribuição
 
@@ -104,7 +102,7 @@ Contribuições são bem-vindas! Siga os passos abaixo para colaborar:
 1. Faça um fork do repositório.
 2. Crie um branch para sua feature ou correção:
    ```bash
-   git checkout -b feature/nova-feature
+       git checkout -b feature/nova-feature
    ```
 3. Envie um pull request explicando suas alterações.
 

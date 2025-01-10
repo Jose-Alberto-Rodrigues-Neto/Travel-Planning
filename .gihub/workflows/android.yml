@@ -2,7 +2,7 @@ name: Android CICD
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "main", "dev", "feat-android-ci-cd" ]
   pull_request:
     branches: [ "main", "dev" ]
 

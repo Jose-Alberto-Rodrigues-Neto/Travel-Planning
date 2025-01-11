@@ -41,25 +41,25 @@ jobs:
       run: ./gradlew build
 
     - name: List Build Directory
-      run: ls -R desktop/build
+      run: ls -R composeApp/build
 
     - name: Upload a Linux Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Linux)
-        path: desktop/build/bin/linuxX64/debugExecutable/desktop.kexe
+        path: composeApp/build/bin/linuxX64/debugExecutable/desktop.kexe
 
     - name: Upload a Windows Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Windows)
-        path: desktop/build/bin/mingwX64/debugExecutable/desktop.exe
+        path: composeApp/build/bin/mingwX64/debugExecutable/desktop.exe
 
     - name: Upload a Mac OS Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Mac OS)
-        path: desktop/build/bin/macosX64/debugExecutable/desktop.kexe
+        path: composeApp/build/bin/macosX64/debugExecutable/desktop.kexe
 
     - name: List Build Directory
       run: ls -R desktop/build

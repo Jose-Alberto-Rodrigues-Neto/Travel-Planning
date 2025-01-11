@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main", "dev" ]
 
+permissions:
+  contents: write
+
 jobs:
 
   test:
@@ -41,6 +44,9 @@ jobs:
 
     - name: Upload a Build Artifact
       run: ./gradlew wasmJsBrowserDistribution
+      with:
+        name: Web Page Artifact
+        path: composeApp/build/dist/wasmJs/productionExecutable
 
     - name: Deploy on Github Pages
       uses: JamesIves/github-pages-deploy-action@v4.7.2

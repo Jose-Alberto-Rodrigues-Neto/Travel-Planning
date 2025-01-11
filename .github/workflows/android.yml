@@ -45,5 +45,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
-        name:Travel-Planning.apk
+        name: Travel-Planning.apk
         path: composeApp/build/outputs/apk/debug/composeApp-debug.apk

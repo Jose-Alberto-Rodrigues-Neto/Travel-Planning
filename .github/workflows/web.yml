@@ -41,8 +41,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Upload a Build Artifact
+    - name: Create Web Artifact
       run: ./gradlew wasmJsBrowserDistribution
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.1
       with:
         name: Web Page Artifact
         path: composeApp/build/dist/wasmJs/productionExecutable

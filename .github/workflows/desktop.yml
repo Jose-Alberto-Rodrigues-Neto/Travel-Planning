@@ -18,7 +18,7 @@ jobs:
             java-version: '17'
 
         - name: Run unit tests
-          run: chmod +x ./gradlew && ./gradlew testDebugUnitTest
+          run: chmod +x ./gradlew && ./gradlew testDebugUnitTest && ./gradlew desktopTest
 
   linux-build:
 

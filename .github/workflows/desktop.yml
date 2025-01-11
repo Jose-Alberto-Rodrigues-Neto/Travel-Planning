@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp
-        path: desktop/build/bin/native/debugExecutable/desktop.kexe
+        path: composeApp/build/bin/native/debugExecutable/desktop.kexe

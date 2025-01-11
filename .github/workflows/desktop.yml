@@ -7,6 +7,7 @@ on:
     branches: [ "main", "dev" ]
 
 jobs:
+
   test:
       runs-on: ubuntu-latest
       steps:
@@ -19,7 +20,7 @@ jobs:
         - name: Run unit tests
           run: chmod +x ./gradlew && ./gradlew testDebugUnitTest
 
-  build:
+  linux-build:
 
     runs-on: ubuntu-latest
 
@@ -38,27 +39,64 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew createDistributable
 
-    - name: List Build Directory
-      run: ls -R composeApp/build/
-
-    - name: Upload a Linux Build Artifact
+    - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Linux)
-        path: composeApp/build/processedResources/desktop/main/composeResources/travelplanning.composeapp.generated.resources/drawable/compose-multiplatform.xml
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.deb
 
-    - name: Upload a Windows Build Artifact
+  windows-build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew createDistributable
+
+    - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Windows)
-        path: composeApp/build/bin/mingwX64/debugExecutable/desktop.exe
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.exe
 
-    - name: Upload a Mac OS Build Artifact
+  mac-os-build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew createDistributable
+
+    - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Mac OS)
-        path: composeApp/build/bin/macosX64/debugExecutable/desktop.kexe
-
-
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.dmg

@@ -112,7 +112,7 @@ compose.desktop {
         mainClass = "travel.planning.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Exe)
             packageName = "travel.planning"
             packageVersion = "1.0.0"
         }

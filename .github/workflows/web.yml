@@ -1,0 +1,48 @@
+name: Web Page CICD
+
+on:
+  push:
+    branches: [ "main", "dev", "feat-adding-desktop-artifact" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+
+  test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: set up JDK 17
+          uses: actions/setup-java@v1
+          with:
+            java-version: '17'
+
+        - name: Run unit tests
+          run: chmod +x ./gradlew && ./gradlew wasmJsBrowserTest
+
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Upload a Build Artifact
+      run: ./gradlew wasmJsBrowserDistribution
+
+    - name: Deploy on Github Pages
+      uses: JamesIves/github-pages-deploy-action@v4.7.2
+      with:
+        folder: composeApp/build/dist/wasmJs/productionExecutable

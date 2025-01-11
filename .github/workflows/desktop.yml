@@ -40,12 +40,14 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: List Build Directory
+      run: ls -R desktop/build
+
     - name: Upload a Linux Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Linux)
         path: desktop/build/bin/linuxX64/debugExecutable/desktop.kexe
-
 
     - name: Upload a Windows Build Artifact
       uses: actions/upload-artifact@v4.3.1
@@ -58,4 +60,8 @@ jobs:
       with:
         name: DesktopApp (Mac OS)
         path: desktop/build/bin/macosX64/debugExecutable/desktop.kexe
+
+    - name: List Build Directory
+      run: ls -R desktop/build
+
 

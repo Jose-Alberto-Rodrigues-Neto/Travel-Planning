@@ -2,9 +2,8 @@ name: Web Page CICD
 
 on:
   push:
-    branches: [ "main", "dev" ]
-  pull_request:
-    branches: [ "main", "dev" ]
+    branches: [ "main", "dev", "feat-adding-desktop-artifact" ]
+
 
 permissions:
   contents: write

@@ -87,13 +87,17 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 #### Como rodar a versão web?
 
 ```bash
-    git clone https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning.git
+    ./gradlew wasmJsBrowserRun -t
 ```
 
+Ou acesse a aba gradle e procure pela opção Web Page Run [auto reload]
+
 ### Como rodar a versão para Desktop?
+
 ```bash
-      gpt falou q é assim: ./gradlew run
+   ./gradlew run
 ```
+Ou acesse a aba gradle e procure pela opção Desktop Run
 
 ## Contribuição
 

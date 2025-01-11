@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Linux)
-        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.deb
 
   windows-build:
 
@@ -72,7 +72,7 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Windows)
-        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.msi
 
   mac-os-build:
 
@@ -99,4 +99,4 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp (Mac OS)
-        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning
+        path: composeApp/build/compose/binaries/main/app/travel.planning/travel.planning.dmg

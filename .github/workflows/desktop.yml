@@ -44,4 +44,4 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: DesktopApp
-        path: .idea/artifacts/composeApp_desktop.xml
+        path: desktop/build/libs/*.jar

@@ -71,31 +71,29 @@ Travel Planning é um aplicativo móvel projetado para facilitar a criação col
 
 - Android Studio
 - IntelliJ IDEA com suporte a Spring Boot
-- JDK 17+
+- JDK 11+
 
 ### Passos
 
 1. Clone o repositório:
    ```bash
-   git clone "link do repositorio"
+       git clone https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning.git
    ```
 
-2. Configure o backend: (Backend vai estar separado)
-   ```bash
-   cd travel-planning/backend
-   ./mvnw spring-boot:run
-   ```
-
-3. Configure o frontend:
+3. Configure o repositório no Android Studio:
    - Abra o projeto no Android Studio.
    - Compile e rode o aplicativo no emulador ou dispositivo físico.
+    
+#### Como rodar a versão web?
 
-4. Conecte o aplicativo ao backend local ajustando a URL base nas configurações do Retrofit.
+```bash
+    git clone https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning.git
+```
 
-5. Como rodar na web:
-    ```bash
-      ./gradlew wasmJsBrowserRun -t
-    ```
+### Como rodar a versão para Desktop?
+```bash
+      gpt falou q é assim: ./gradlew run
+```
 
 ## Contribuição
 
@@ -104,15 +102,15 @@ Contribuições são bem-vindas! Siga os passos abaixo para colaborar:
 1. Faça um fork do repositório.
 2. Crie um branch para sua feature ou correção:
    ```bash
-   git checkout -b feature/nova-feature
+       git checkout -b feature/nova-feature
    ```
 3. Envie um pull request explicando suas alterações.
 
-## Contato
+# Development Team 
 
-Entre em contato para dúvidas ou sugestões:
-- Email: seu-email@exemplo.com
-- GitHub: [seu-usuario](https://github.com/seu-usuario)
+<a href="https://github.com/Jose-Alberto-Rodrigues-Neto/Travel-Planning/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=Jose-Alberto-Rodrigues-Neto/Travel-Planning" alt="Lista de contribuidores"/>
+</a>
 
 ---
-Obrigado por usar o **Travel Planning**! Que sua próxima viagem seja inesquecível! 🌍✈️
+# Obrigado por usar o **Travel Planning**! Que sua próxima viagem seja inesquecível! 🌍✈️

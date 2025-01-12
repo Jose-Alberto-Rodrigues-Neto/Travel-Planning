@@ -1,11 +1,14 @@
-name: Android CICD
+name: Web Page CICD
 
 on:
   push:
-    branches: [ "main", "dev"]
+    branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main", "dev" ]
 
+
+permissions:
+  contents: write
 
 jobs:
 
@@ -17,11 +20,11 @@ jobs:
           uses: actions/setup-java@v1
           with:
             java-version: '17'
-  
+
         - name: Run unit tests
-          run: chmod +x ./gradlew && ./gradlew testDebugUnitTest
-        
-  
+          run: chmod +x ./gradlew && ./gradlew wasmJsBrowserTest
+
+
   build:
 
     runs-on: ubuntu-latest
@@ -29,7 +32,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    
+
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -40,11 +43,16 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Create Web Artifact
+      run: ./gradlew wasmJsBrowserDistribution
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
       with:
-        name: Travel-Planning.apk
-        path: composeApp/build/outputs/apk/debug/composeApp-debug.apk
+        name: Web Page Artifact
+        path: composeApp/build/dist/wasmJs/productionExecutable
+
+    - name: Deploy on Github Pages
+      uses: JamesIves/github-pages-deploy-action@v4.7.2
+      with:
+        folder: composeApp/build/dist/wasmJs/productionExecutable

@@ -113,7 +113,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "travel.planning"
+            packageName = "Travel Planning"
             packageVersion = "1.0.0"
         }
     }

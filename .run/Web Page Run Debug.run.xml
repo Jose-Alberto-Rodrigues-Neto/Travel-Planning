@@ -1,16 +1,16 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Desktop Run" type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="Web Page Run Debug" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
       <option name="externalSystemIdString" value="GRADLE" />
-      <option name="scriptParameters" value="--build-cache --continuous" />
+      <option name="scriptParameters" value="--debug --stacktrace" />
       <option name="taskDescriptions">
         <list />
       </option>
       <option name="taskNames">
         <list>
-          <option value="run" />
+          <option value="wasmJsBrowserRun" />
         </list>
       </option>
       <option name="vmOptions" />

@@ -47,4 +47,5 @@ jobs:
       uses: actions/upload-artifact@v4.3.1
       with:
         name: Travel-Planning
-        path: composeApp/build/outputs/apk/debug/
+        # arquivo .dmg, preciso saber o comando e o caminho em que o artefato é salvo, pra isso, preciso de um mac, é foda
+        path: composeApp/build/outputs/

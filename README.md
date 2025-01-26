@@ -1,5 +1,8 @@
 # Travel Planning
 
+![image](https://github.com/user-attachments/assets/7b771a6d-01b0-443a-a3ba-fd6b4a056a40)
+
+
     Organize, planeje e viva sua melhor viagem.
 
 Travel Planning é um aplicativo móvel projetado para facilitar a criação colaborativa de cronogramas de viagem. Com ele, grupos de viajantes podem planejar suas atividades, organizar prioridades e maximizar o tempo disponível, promovendo uma experiência de viagem mais dinâmica e democrática.

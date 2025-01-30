@@ -32,7 +32,6 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
-            EntryScreen()
         }
     }
 }

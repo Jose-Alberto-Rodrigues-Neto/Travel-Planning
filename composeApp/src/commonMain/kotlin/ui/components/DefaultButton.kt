@@ -16,13 +16,14 @@ fun DefaultButton(
     modifier: Modifier,
     title: String,
     iconRes: Int? = null,
+    color: Color,
     onClick: ()->Unit
 ){
     Button(
         modifier = modifier
             .heightIn(min = 52.dp),
         onClick = {onClick()},
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.DarkGray, contentColor = Color.White),
+        colors = ButtonDefaults.buttonColors(backgroundColor = color, contentColor = Color.White),
     ){
         Text(
             text = title,

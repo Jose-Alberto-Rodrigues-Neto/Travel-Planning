@@ -1,19 +1,14 @@
-package travel.planning
+package ui.components.screen
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,11 +22,16 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import travelplanning.composeapp.generated.resources.Lobster_Regular
 import travelplanning.composeapp.generated.resources.LoginBackground
 import travelplanning.composeapp.generated.resources.Res
-import travelplanning.composeapp.generated.resources.compose_multiplatform
+import travelplanning.composeapp.generated.resources.app_name
+import travelplanning.composeapp.generated.resources.app_slogan
 import ui.components.DefaultButton
+import org.jetbrains.compose.resources.Font
+import travelplanning.composeapp.generated.resources.Sora_Regular
 
 @Preview
 @Composable
@@ -48,6 +48,10 @@ fun EntryScreen() {
 
 @Composable
 fun EntryScreenDesktop(maxWidth: Dp) {
+
+    val lobster = FontFamily(Font(Res.font.Lobster_Regular))
+    val soraRegular = FontFamily(Font(Res.font.Sora_Regular))
+
     Row(
         modifier = Modifier
     ) {
@@ -72,7 +76,7 @@ fun EntryScreenDesktop(maxWidth: Dp) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ){
                 Text(
-                    text = "Travel Planning",
+                    text = stringResource(Res.string.app_name),
                     fontSize =
                         if (maxWidth < 800.dp){
                             42.sp
@@ -80,15 +84,16 @@ fun EntryScreenDesktop(maxWidth: Dp) {
                             54.sp
                         },
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1D1D1D),
-                    fontFamily = FontFamily.Serif
+                    color = Color(red = 12, green = 0, blue = 139),
+                    fontFamily = lobster
                 )
                 Text(
                     modifier = Modifier.padding(vertical = 20.dp),
-                    text = "Organize, planeje e viva sua melhor viagem.",
-                    fontSize = 25.sp,
+                    text = stringResource(Res.string.app_slogan),
+                    fontSize = 20.sp,
+                    fontFamily = soraRegular,
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF2F2F2F),
+                    color = Color(red = 51, green = 35, blue = 102),
                     textAlign = TextAlign.Center
                 )
             }
@@ -100,6 +105,7 @@ fun EntryScreenDesktop(maxWidth: Dp) {
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth().padding(5.dp),
                     title = "Login",
+                    color = Color(red = 52, green = 199, blue = 89),
                     onClick = {
                         println("Login")
                     }
@@ -107,6 +113,7 @@ fun EntryScreenDesktop(maxWidth: Dp) {
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth().padding(5.dp),
                     title = "Sign Up",
+                    color = Color.LightGray,
                     onClick = { }
                 )
             }
@@ -118,6 +125,10 @@ fun EntryScreenDesktop(maxWidth: Dp) {
 
 @Composable
 fun EntryScreenMobile() {
+
+    val lobster = FontFamily(Font(Res.font.Lobster_Regular))
+    val soraRegular = FontFamily(Font(Res.font.Sora_Regular))
+
     Image(
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,
@@ -133,20 +144,21 @@ fun EntryScreenMobile() {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = "Travel Planning",
+                text = stringResource(Res.string.app_name),
                 fontSize = 42.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1D1D1D),
-                fontFamily = FontFamily.Serif
+                color = Color(red = 12, green = 0, blue = 139),
+                fontFamily = lobster
             )
 
             Text(
                 modifier = Modifier.padding(vertical = 20.dp),
-                text = "Organize, planeje e viva sua melhor viagem.",
-                fontSize = 25.sp,
+                text = stringResource(Res.string.app_slogan),
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Medium,
-                color = Color(0xFF2F2F2F),
-                textAlign = TextAlign.Center
+                color = Color(red = 51, green = 35, blue = 102),
+                textAlign = TextAlign.Center,
+                fontFamily = soraRegular
             )
         }
 
@@ -156,6 +168,7 @@ fun EntryScreenMobile() {
             DefaultButton(
                 modifier = Modifier.fillMaxWidth().padding(5.dp),
                 title = "Login",
+                color = Color(red = 52, green = 199, blue = 89),
                 onClick = {
                     println("Login")
                 }
@@ -163,6 +176,7 @@ fun EntryScreenMobile() {
             DefaultButton(
                 modifier = Modifier.fillMaxWidth().padding(5.dp),
                 title = "Sign Up",
+                color = Color.LightGray,
                 onClick = { }
             )
         }

@@ -1,4 +1,4 @@
-package ui.components.screen
+package screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -49,14 +49,12 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import travelplanning.composeapp.generated.resources.Lobster_Regular
 import travelplanning.composeapp.generated.resources.LoginBackground
 import travelplanning.composeapp.generated.resources.Res
-import travelplanning.composeapp.generated.resources.app_name
-import travelplanning.composeapp.generated.resources.app_slogan
 import travelplanning.composeapp.generated.resources.login
 import ui.components.DefaultButton
 import org.jetbrains.compose.resources.Font
 import travelplanning.composeapp.generated.resources.EyeOff
-import travelplanning.composeapp.generated.resources.Sora_Regular
-import travelplanning.composeapp.generated.resources.plus_icon
+import travelplanning.composeapp.generated.resources.Eye
+import travelplanning.composeapp.generated.resources.app_name
 
 @Preview
 @Composable
@@ -75,7 +73,9 @@ fun LoginScreen() {
                 password = password,
                 onPasswordChange = { password = it },
                 passwordIsVisible = passwordIsVisible,
-                onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible }
+                onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible },
+                onLogin = { println("Login") },
+                goToCreateAccount = { println("Go to create Account") }
             )
 
             else -> LoginScreenMobile(
@@ -84,7 +84,9 @@ fun LoginScreen() {
                 password = password,
                 onPasswordChange = { password = it },
                 passwordIsVisible = passwordIsVisible,
-                onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible }
+                onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible },
+                onLogin = { println("Login") },
+                goToCreateAccount = { println("Go to create Account") }
             )
         }
     }
@@ -98,7 +100,9 @@ fun LoginScreenDesktop(
     password: String,
     onPasswordChange: (String) -> Unit,
     passwordIsVisible: Boolean,
-    onPasswordIsVisibleChange: () -> Unit
+    onPasswordIsVisibleChange: () -> Unit,
+    onLogin: () -> Unit,
+    goToCreateAccount: () -> Unit
 ) {
 
     val lobster = FontFamily(Font(Res.font.Lobster_Regular))
@@ -127,7 +131,7 @@ fun LoginScreenDesktop(
             ) {
                 Text(
                     text = stringResource(Res.string.login),
-                    fontSize = if (maxWidth < 800.dp) 42.sp else 54.sp,
+                    fontSize = if (maxWidth < 800.dp) 64.sp else 84.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(red = 12, green = 0, blue = 139),
                     fontFamily = lobster
@@ -160,17 +164,35 @@ fun LoginScreenDesktop(
                         ) {
                             Icon(
                                 modifier = Modifier.size(20.dp),
-                                painter = painterResource(Res.drawable.EyeOff),
+                                painter = if(passwordIsVisible) painterResource(Res.drawable.Eye) else painterResource(Res.drawable.EyeOff),
                                 contentDescription = "Clique para alterar a visibilidade da senha"
                             )
                         }
                     }
                 )
                 DefaultButton(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 15.dp),
                     title = "Fazer Login",
-                    color = Color(red = 52, green = 199, blue = ),
-                    onClick = TODO()
+                    color = Color(red = 52, green = 199, blue = 89),
+                    onClick = onLogin
+                )
+                TextButton(
+                    onClick = goToCreateAccount,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 10.dp, horizontal = 16.dp),
+                    enabled = true,
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.White,
+                        backgroundColor = Color.Transparent
+                    ),
+                    content = {
+                        Text(
+                            text = "Ainda não possui conta? Crie uma!",
+                            fontSize = 16.sp,
+                            color = Color.Black.copy(alpha = 0.7f)
+                        )
+                    }
                 )
             }
         }
@@ -184,7 +206,9 @@ fun LoginScreenMobile(
     onUsernameChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     passwordIsVisible: Boolean,
-    onPasswordIsVisibleChange: () -> Unit
+    onPasswordIsVisibleChange: () -> Unit,
+    onLogin: () -> Unit,
+    goToCreateAccount: () -> Unit
 ) {
 
     val lobster = FontFamily(Font(Res.font.Lobster_Regular))
@@ -200,20 +224,21 @@ fun LoginScreenMobile(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp, vertical = 40.dp),
         verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
+            modifier = Modifier.padding(top = 70.dp),
             text = stringResource(Res.string.login),
-            fontSize = 42.sp,
+            fontSize = 72.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White,
             fontFamily = lobster
         )
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
         ) {
             OutlinedTextField(
                 modifier = Modifier
@@ -247,7 +272,7 @@ fun LoginScreenMobile(
                     ) {
                         Icon(
                             modifier = Modifier.size(20.dp),
-                            painter = painterResource(Res.drawable.EyeOff),
+                            painter = if(passwordIsVisible) painterResource(Res.drawable.Eye) else painterResource(Res.drawable.EyeOff),
                             contentDescription = "Clique para alterar a visibilidade da senha"
                         )
                     }
@@ -261,8 +286,14 @@ fun LoginScreenMobile(
                     backgroundColor = Color.Black.copy(0.25f)
                 )
             )
+            DefaultButton(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 15.dp),
+                title = "Fazer Login",
+                color = Color(red = 52, green = 199, blue = 89),
+                onClick = onLogin
+            )
             TextButton(
-                onClick = { TODO() },
+                onClick = goToCreateAccount,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 10.dp, horizontal = 16.dp),
@@ -279,5 +310,12 @@ fun LoginScreenMobile(
                 }
             )
         }
+        Text(
+            text = stringResource(Res.string.app_name),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            fontFamily = lobster
+        )
     }
 }

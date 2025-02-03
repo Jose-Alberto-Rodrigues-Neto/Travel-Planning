@@ -1,4 +1,4 @@
-package ui.components.screen
+package screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

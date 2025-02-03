@@ -58,42 +58,47 @@ import travelplanning.composeapp.generated.resources.app_name
 
 @Preview
 @Composable
-fun LoginScreen() {
+fun CreateAccount() {
     var username by rememberSaveable { mutableStateOf("") }
+    var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passwordIsVisible by rememberSaveable { mutableStateOf(false) }
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize()
     ) {
         when {
-            maxWidth > 600.dp -> LoginScreenDesktop(
+            maxWidth > 600.dp -> CreateAccountDesktop(
                 maxWidth = maxWidth,
                 username = username,
                 onUsernameChange = { username = it },
+                email = email,
+                onEmailChange = { email = it },
                 password = password,
                 onPasswordChange = { password = it },
                 passwordIsVisible = passwordIsVisible,
                 onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible },
-                onLogin = { println("Login") },
-                goToCreateAccount = { println("Go to create Account") }
+                onLogin = { println("Create Account") },
+                goToCreateAccount = { println("Go to login") }
             )
 
-            else -> LoginScreenMobile(
+            else -> CreateAccountMobile(
                 username = username,
                 onUsernameChange = { username = it },
+                email = email,
+                onEmailChange = { email = it },
                 password = password,
                 onPasswordChange = { password = it },
                 passwordIsVisible = passwordIsVisible,
                 onPasswordIsVisibleChange = { passwordIsVisible = !passwordIsVisible },
-                onLogin = { println("Login") },
-                goToCreateAccount = { println("Go to create Account") }
+                onLogin = { println("Create Account") },
+                goToCreateAccount = { println("Go to login") }
             )
         }
     }
 }
 
 @Composable
-fun LoginScreenDesktop(
+fun CreateAccountDesktop(
     maxWidth: Dp,
     username: String,
     onUsernameChange: (String) -> Unit,
@@ -102,7 +107,9 @@ fun LoginScreenDesktop(
     passwordIsVisible: Boolean,
     onPasswordIsVisibleChange: () -> Unit,
     onLogin: () -> Unit,
-    goToCreateAccount: () -> Unit
+    goToCreateAccount: () -> Unit,
+    email: String,
+    onEmailChange: (String) -> Unit
 ) {
 
     val lobster = FontFamily(Font(Res.font.Lobster_Regular))
@@ -130,7 +137,7 @@ fun LoginScreenDesktop(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(Res.string.login),
+                    text = "Criar Conta",
                     fontSize = if (maxWidth < 800.dp) 64.sp else 84.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(red = 12, green = 0, blue = 139),
@@ -146,11 +153,18 @@ fun LoginScreenDesktop(
                     modifier = Modifier.fillMaxWidth(),
                     value = username,
                     onValueChange = onUsernameChange,
-                    label = { Text("Username ou Email") },
+                    label = { Text("Username") },
+                    placeholder = { Text("user123") },
+                    singleLine = true
+                )
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    value = email,
+                    onValueChange = onEmailChange,
+                    label = { Text("Email") },
                     placeholder = { Text("user123@gmail.com") },
                     singleLine = true
                 )
-
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = password,
@@ -172,7 +186,7 @@ fun LoginScreenDesktop(
                 )
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 15.dp),
-                    title = "Fazer Login",
+                    title = "Criar conta",
                     color = Color(red = 52, green = 199, blue = 89),
                     onClick = onLogin
                 )
@@ -188,7 +202,7 @@ fun LoginScreenDesktop(
                     ),
                     content = {
                         Text(
-                            text = "Ainda não possui conta? Crie uma!",
+                            text = "Já possui uma conta? Faça Login!",
                             fontSize = 16.sp,
                             color = Color.Black.copy(alpha = 0.7f)
                         )
@@ -200,7 +214,7 @@ fun LoginScreenDesktop(
 }
 
 @Composable
-fun LoginScreenMobile(
+fun CreateAccountMobile(
     username: String,
     password: String,
     onUsernameChange: (String) -> Unit,
@@ -208,7 +222,9 @@ fun LoginScreenMobile(
     passwordIsVisible: Boolean,
     onPasswordIsVisibleChange: () -> Unit,
     onLogin: () -> Unit,
-    goToCreateAccount: () -> Unit
+    goToCreateAccount: () -> Unit,
+    email: String,
+    onEmailChange: (String) -> Unit
 ) {
 
     val lobster = FontFamily(Font(Res.font.Lobster_Regular))
@@ -224,13 +240,13 @@ fun LoginScreenMobile(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 40.dp),
+            .padding(horizontal = 16.dp, vertical = 20.dp),
         verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             modifier = Modifier.padding(top = 70.dp),
-            text = stringResource(Res.string.login),
+            text = "Criar Conta",
             fontSize = 72.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White,
@@ -245,7 +261,24 @@ fun LoginScreenMobile(
                     .fillMaxWidth(),
                 value = username,
                 onValueChange = onUsernameChange,
-                label = { Text("Username ou Email") },
+                label = { Text("Username") },
+                placeholder = { Text("user123") },
+                singleLine = true,
+                colors = TextFieldDefaults.textFieldColors(
+                    textColor = Color.White,
+                    placeholderColor = Color.White.copy(0.5f),
+                    unfocusedLabelColor = Color.White,
+                    focusedLabelColor = Color.White,
+                    unfocusedIndicatorColor = Color.White,
+                    backgroundColor = Color.Black.copy(0.25f)
+                )
+            )
+            OutlinedTextField(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                value = email,
+                onValueChange = onEmailChange,
+                label = { Text("Email") },
                 placeholder = { Text("user123@gmail.com") },
                 singleLine = true,
                 colors = TextFieldDefaults.textFieldColors(
@@ -257,7 +290,6 @@ fun LoginScreenMobile(
                     backgroundColor = Color.Black.copy(0.25f)
                 )
             )
-
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -288,7 +320,7 @@ fun LoginScreenMobile(
             )
             DefaultButton(
                 modifier = Modifier.fillMaxWidth().padding(vertical = 15.dp),
-                title = "Fazer Login",
+                title = "Criar Conta",
                 color = Color(red = 52, green = 199, blue = 89),
                 onClick = onLogin
             )
@@ -304,7 +336,7 @@ fun LoginScreenMobile(
                 ),
                 content = {
                     Text(
-                        text = "Ainda não possui conta? Crie uma!",
+                        text = "Já possui uma conta? Faça login!",
                         fontSize = 16.sp
                     )
                 }

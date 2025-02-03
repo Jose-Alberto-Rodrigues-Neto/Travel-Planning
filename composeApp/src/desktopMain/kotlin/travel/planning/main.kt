@@ -2,6 +2,7 @@ package travel.planning
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import screen.CreateAccount
 import screen.LoginScreen
 
 fun main() = application {
@@ -9,6 +10,6 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "Travel Planning",
     ) {
-        LoginScreen()
+        CreateAccount()
     }
 }
